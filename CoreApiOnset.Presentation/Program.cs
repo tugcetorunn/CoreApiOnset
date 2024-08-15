@@ -14,6 +14,9 @@ builder.Services.AddSwaggerGen(); // swagger belgelerini (json) otomatik oluþtur
 // in memory db 2. adým dbcontext in tetikleneceði kod yazýlýr. (In  memory db ve ef core entegration)
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("ECommerceDb"));
 
+// mediatr 5. adým mediatr ýn sisteme entegre edilmesi
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblies(typeof(Program).Assembly)); // program içerisindeki tüm handler larý
+                                                                                              // kayýt etmiþ oluyoruz.
 var app = builder.Build();
 
 // proje 2. adým
